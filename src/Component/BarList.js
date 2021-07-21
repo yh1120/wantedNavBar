@@ -1,6 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
+const Ul = styled.ul`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  width: auto;
+  @media (min-width: 768px) and (max-width: 974px) {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 767px) {
+    text-align: left;
+    margin: 0;
+  }
+`;
+
 const List = styled.li`
   list-style: none;
   padding: 15px 0 15px 0;
@@ -11,9 +31,23 @@ const List = styled.li`
   box-sizing: border-box;
   display: inline-block;
   &:hover {
-    border-bottom-width: 2px;
-    border-bottom-color: #e1e2e3;
-    border-bottom-style: solid;
+    @media (min-width: 975px) {
+      border-bottom-width: 2px;
+      border-bottom-color: #e1e2e3;
+      border-bottom-style: solid;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 974px) {
+    height: 50px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    list-style: none;
+    cursor: pointer;
+    height: inherit;
   }
 `;
 
@@ -23,61 +57,72 @@ const ATag = styled.a`
   padding: 15px 15px 15px 15px;
   height: 50px;
   color: #323232;
+
+  @media (min-width: 768px) and (max-width: 974px) {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    position: relative;
+    font-size: 13px;
+    line-height: 20px;
+  }
 `;
 
-const BarList = ({ setSearchHover }) => {
+const BarList = ({ searchHover, setSearchHover, isMobile, isTablet }) => {
   const showMenu = () => {
     setSearchHover(true);
-    console.log("onMouseEnter");
   };
   const leaveMenu = () => {
-    setSearchHover(false);
-    console.log("onMouseLeave");
+    if (searchHover === true) {
+      setSearchHover(false);
+    }
   };
 
   return (
-    <ul
-      style={{
-        display: "block",
-        boxSizing: "border-box",
-        margin: "0",
-        padding: "0",
-      }}
-    >
-      {/* <List>
-        <aTag href="" style={{ display: "none" }}>
-          홈
-        </aTag>
-      </List> */}
-      <List>
-        <ATag
-          className="search"
-          href=""
-          onMouseEnter={showMenu}
-          onMouseLeave={leaveMenu}
-        >
+    <Ul isTablet={isTablet}>
+      {isMobile && (
+        <List>
+          <ATag href="">홈</ATag>
+        </List>
+      )}
+      <List isTablet={isTablet}>
+        <ATag className="search" href="/" onMouseEnter={!isMobile && showMenu}>
           탐색
         </ATag>
       </List>
-      <List>
-        <ATag href="">커리어 성장</ATag>
+      <List isTablet={isTablet}>
+        <ATag href="/" onMouseEnter={leaveMenu}>
+          커리어 성장
+        </ATag>
       </List>
-      <List>
-        <ATag href="">직군별 연봉</ATag>
-      </List>
-      <List>
-        <ATag href="">이력서</ATag>
-      </List>
-      <List>
-        <ATag href="">매치업</ATag>
-      </List>
-      <List>
-        <ATag href="">프리랜서</ATag>
-      </List>
-      <List>
-        <ATag href="">Ai 합격 예측</ATag>
-      </List>
-    </ul>
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            직군별 연봉
+          </ATag>
+        </List>
+      )}
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            이력서
+          </ATag>
+        </List>
+      )}
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            매치업
+          </ATag>
+        </List>
+      )}
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            프리랜서
+          </ATag>
+        </List>
+      )}
+    </Ul>
   );
 };
 

@@ -25,3 +25,18 @@
 │  │      SideList.js
 │  │      Menu.js
 ```
+
+## 사용한 라이브러리
+
+### material-ui
+
+- 아이콘을 사용하기 위해 가져왔다.
+
+### styled-components
+
+- js 안에서 css작업을 하기 쉽게 도와주는 라이브러리이다.(CSS in JS)
+  선언한 변수는 컴포넌트 형태로 사용할 수 있고, ``사이의 문법은 css와 동일하게 사용 가능하다.
+
+### react-responsive
+
+- 반응형 웹을 만들기 위해 사용했다. 사용자가 정한 화면 폭에 따라 true 혹은 false가 반환된다.
