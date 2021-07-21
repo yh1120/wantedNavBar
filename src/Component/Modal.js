@@ -9,7 +9,6 @@ const Container = styled.div`
   left: 0;
   bottom: 0;
   margin-top: 0;
-  /* transform:0; */
   padding: 0 !important;
   display: block;
   margin: 0;
@@ -65,8 +64,6 @@ const CloseButton = styled.button`
   box-shadow: none !important;
   cursor: pointer;
   height: 100%;
-  /* text-align: center; */
-  /* align-items: flex-start; */
   box-sizing: border-box;
 `;
 

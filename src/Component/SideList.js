@@ -11,11 +11,6 @@ const Ul = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: disc;
-  /* margin-block-start: 1em; */
-  /* margin-block-end: 1em; */
-  /* margin-inline-start: 0px; */
-  /* margin-inline-end: 0px; */
-  /* padding-inline-start: 40px; */
 `;
 
 const List = styled.li`
@@ -54,9 +49,6 @@ const SignupButton = styled.button`
 `;
 
 const EnterpriseButton = styled.a`
-  /* display: inline-flex;
-  background-color: transparent;
-  width: 81px; */
   font-size: 13px;
   color: #666;
   line-height: 30px;

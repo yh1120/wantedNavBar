@@ -11,16 +11,8 @@ const Presentation = styled.div`
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   overflow: hidden;
-
   box-sizing: border-box;
   height: 0;
-
-  /* &.show {
-  height: auto;
-  opacity: 1;
-  display: block !important;
-  box-sizing: border-box;
-} */
 
   ${(props) =>
     props.searchHover &&
@@ -133,14 +125,6 @@ const Icon = styled.i`
 `;
 
 const Menu = ({ searchHover, setSearchHover }) => {
-  //   const [menuHover, setMenuHover] = useState(false);
-  //   const showMenu = () => {
-  //     setMenuHover(true);
-  //   };
-  //   const leaveMenu = () => {
-  //     setMenuHover(false);
-  //   };
-
   const leaveMenu = () => {
     if (searchHover === true) {
       setSearchHover(false);

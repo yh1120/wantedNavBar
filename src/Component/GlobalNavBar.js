@@ -6,7 +6,6 @@ import SideList from "./SideList";
 import styled from "styled-components";
 
 const Header = styled.div`
-  // backgroundColor: "#aefbc1",
   position: fixed;
   padding-right: initial;
   width: 100%;

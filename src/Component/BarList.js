@@ -122,6 +122,13 @@ const BarList = ({ searchHover, setSearchHover, isMobile, isTablet }) => {
           </ATag>
         </List>
       )}
+      {/* {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            Ai 합격예측
+          </ATag>
+        </List>
+      )} */}
     </Ul>
   );
 };
