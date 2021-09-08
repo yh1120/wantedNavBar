@@ -1,6 +1,6 @@
 import React from "react";
-import GlobalNavBar from "./Component/GlobalNavBar";
 import { useMediaQuery } from "react-responsive";
+import { GlobalNavBar } from "./Nav";
 
 const App = () => {
   const isMobile = useMediaQuery({

@@ -1,6 +1,65 @@
 import React from "react";
 import styled from "styled-components";
 
+const BarList = ({ searchHover, setSearchHover, isMobile, isTablet }) => {
+  const showMenu = () => {
+    setSearchHover(true);
+  };
+  const leaveMenu = () => {
+    if (searchHover === true) {
+      setSearchHover(false);
+    }
+  };
+
+  return (
+    <Ul isTablet={isTablet}>
+      {isMobile && (
+        <List>
+          <ATag href="">홈</ATag>
+        </List>
+      )}
+      <List isTablet={isTablet}>
+        <ATag className="search" href="/" onMouseEnter={!isMobile && showMenu}>
+          탐색
+        </ATag>
+      </List>
+      <List isTablet={isTablet}>
+        <ATag href="/" onMouseEnter={leaveMenu}>
+          커리어 성장
+        </ATag>
+      </List>
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            직군별 연봉
+          </ATag>
+        </List>
+      )}
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            이력서
+          </ATag>
+        </List>
+      )}
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            매치업
+          </ATag>
+        </List>
+      )}
+      {!isMobile && (
+        <List isTablet={isTablet}>
+          <ATag href="/" onMouseEnter={leaveMenu}>
+            프리랜서
+          </ATag>
+        </List>
+      )}
+    </Ul>
+  );
+};
+
 const Ul = styled.ul`
   box-sizing: border-box;
   margin: 0;
@@ -66,71 +125,5 @@ const ATag = styled.a`
     line-height: 20px;
   }
 `;
-
-const BarList = ({ searchHover, setSearchHover, isMobile, isTablet }) => {
-  const showMenu = () => {
-    setSearchHover(true);
-  };
-  const leaveMenu = () => {
-    if (searchHover === true) {
-      setSearchHover(false);
-    }
-  };
-
-  return (
-    <Ul isTablet={isTablet}>
-      {isMobile && (
-        <List>
-          <ATag href="">홈</ATag>
-        </List>
-      )}
-      <List isTablet={isTablet}>
-        <ATag className="search" href="/" onMouseEnter={!isMobile && showMenu}>
-          탐색
-        </ATag>
-      </List>
-      <List isTablet={isTablet}>
-        <ATag href="/" onMouseEnter={leaveMenu}>
-          커리어 성장
-        </ATag>
-      </List>
-      {!isMobile && (
-        <List isTablet={isTablet}>
-          <ATag href="/" onMouseEnter={leaveMenu}>
-            직군별 연봉
-          </ATag>
-        </List>
-      )}
-      {!isMobile && (
-        <List isTablet={isTablet}>
-          <ATag href="/" onMouseEnter={leaveMenu}>
-            이력서
-          </ATag>
-        </List>
-      )}
-      {!isMobile && (
-        <List isTablet={isTablet}>
-          <ATag href="/" onMouseEnter={leaveMenu}>
-            매치업
-          </ATag>
-        </List>
-      )}
-      {!isMobile && (
-        <List isTablet={isTablet}>
-          <ATag href="/" onMouseEnter={leaveMenu}>
-            프리랜서
-          </ATag>
-        </List>
-      )}
-      {/* {!isMobile && (
-        <List isTablet={isTablet}>
-          <ATag href="/" onMouseEnter={leaveMenu}>
-            Ai 합격예측
-          </ATag>
-        </List>
-      )} */}
-    </Ul>
-  );
-};
 
 export default BarList;

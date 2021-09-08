@@ -1,9 +1,47 @@
 import React, { useState } from "react";
-import Title from "./Title";
-import BarList from "./BarList";
-import Menu from "./Menu";
-import SideList from "./SideList";
 import styled from "styled-components";
+import { Title, BarList, Menu, SideList } from "../Component";
+
+const GlobalNavBar = ({ isMobile, isTablet, isDesktop }) => {
+  const [searchHover, setSearchHover] = useState(false);
+  const [login, setLogin] = useState(false);
+
+  const handleLogin = () => {
+    console.log("login");
+    setLogin(true);
+  };
+
+  const handleLogout = () => {
+    setLogin(false);
+  };
+
+  return (
+    <div>
+      <Header>
+        <Container className="inner" login={login}>
+          <Nav>
+            {(!isMobile || !login) && (
+              <Title isMobile={isMobile} handleLogin={handleLogin} />
+            )}
+            <BarList
+              searchHover={searchHover}
+              setSearchHover={setSearchHover}
+              isMobile={isMobile}
+              isTablet={isTablet}
+            />
+            <Menu searchHover={searchHover} setSearchHover={setSearchHover} />
+            <SideList
+              isMobile={isMobile}
+              login={login}
+              handleLogin={handleLogin}
+              handleLogout={handleLogout}
+            />
+          </Nav>
+        </Container>
+      </Header>
+    </div>
+  );
+};
 
 const Header = styled.div`
   position: fixed;
@@ -16,7 +54,7 @@ const Header = styled.div`
   z-index: 100;
 `;
 
-const Desktop = styled.div`
+const Container = styled.div`
   margin: 0 auto;
   height: 50px;
   width: 90%;
@@ -42,44 +80,5 @@ const Nav = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
-const GlobalNavBar = ({ isMobile, isTablet, isDesktop }) => {
-  const [searchHover, setSearchHover] = useState(false);
-  const [login, setLogin] = useState(false);
-  const handleLogin = () => {
-    setLogin(true);
-  };
-
-  const handleLogout = () => {
-    setLogin(false);
-  };
-
-  return (
-    <div>
-      <Header>
-        <Desktop className="inner" login={login}>
-          <Nav>
-            {(!isMobile || !login) && (
-              <Title isMobile={isMobile} handleLogin={handleLogin} />
-            )}
-            <BarList
-              searchHover={searchHover}
-              setSearchHover={setSearchHover}
-              isMobile={isMobile}
-              isTablet={isTablet}
-            />
-            <Menu searchHover={searchHover} setSearchHover={setSearchHover} />
-            <SideList
-              isMobile={isMobile}
-              login={login}
-              handleLogin={handleLogin}
-              handleLogout={handleLogout}
-            />
-          </Nav>
-        </Desktop>
-      </Header>
-    </div>
-  );
-};
 
 export default GlobalNavBar;
